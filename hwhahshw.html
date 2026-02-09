@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Simple 90s font */
+            text-align: center;
+            background: url('') no-repeat center center fixed;
+            background-size: cover;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+            background: #c0c0c0; /* Windows 95 gray */
+            border: 2px outset #c0c0c0;
+            border-radius: 0;
+            box-shadow: 2px 2px 0px #808080; /* Subtle 3D shadow */
+            position: relative;
+        }
+        #titlebar {
+            background: #000080; /* Blue title bar */
+            color: #fff;
+            padding: 5px;
+            font-size: 14px;
+            text-align: left;
+            border-bottom: 1px solid #000;
+        }
+        #titlebar .buttons {
+            float: right;
+            font-size: 12px;
+        }
+        #titlebar .buttons span {
+            margin-left: 5px;
+            padding: 2px 5px;
+            background: #c0c0c0;
+            border: 1px inset #c0c0c0;
+            cursor: pointer;
+        }
+        #content {
+            padding: 20px;
+            background: #fff;
+        }
+        #question {
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        button {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            margin: 10px;
+            padding: 8px 16px;
+            border: 2px outset #c0c0c0;
+            border-radius: 0;
+            cursor: pointer;
+            background: #c0c0c0;
+            color: #000;
+            position: absolute;
+        }
+        #yesBtn {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #yesBtn:active {
+            border: 2px inset #c0c0c0;
+        }
+        #noBtn {
+            transition: opacity 0.2s ease;
+        }
+        #noBtn:active {
+            border: 2px inset #c0c0c0;
+        }
+        #response {
+            font-size: 20px;
+            margin: 20px 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            position: relative;
+        }
+        .celebrate {
+            animation: none; /* No animation for 90s simplicity */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="titlebar">
+            Valentine's Question
+            <div class="buttons">
+                <span>_</span><span>□</span><span>X</span>
+            </div>
+        </div>
+        <div id="content">
+            <div id="question">Will you be my valentine? 💖</div>
+            <button id="yesBtn" onclick="respond('yes')">Yes</button>
+            <button id="noBtn" onclick="respond('no')">No</button>
+            <div id="response"></div>
+        </div>
+    </div>
+
+    <script>
+        const phrases = ["Are you sure?", "Really?", "Come on!", "Please say yes!", "Just kidding, but seriously?", "One more chance?"];
+        let index = 0;
+
+        function respond(answer) {
+            const responseDiv = document.getElementById('response');
+            const questionDiv = document.getElementById('question');
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+
+            if (answer === 'yes') {
+                questionDiv.innerHTML = "";
+                responseDiv.innerHTML = "Yay! I love you! ❤️";
+                responseDiv.style.opacity = '1';
+                yesBtn.style.display = 'none';
+                noBtn.style.display = 'none';
+            } else if (answer === 'no') {
+                // Disappear effect
+                noBtn.style.opacity = '0';
+                // Update question with a phrase
+                questionDiv.innerHTML = phrases[index % phrases.length] + " 💔";
+                index++;
+                responseDiv.style.opacity = '0';
+                // After a short delay, move and reappear
+                setTimeout(() => {
+                    moveNoButton();
+                    noBtn.style.opacity = '1';
+                }, 200);
+            }
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = document.getElementById('container');
+            const containerRect = container.getBoundingClientRect();
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+
+            // Generate random position within the container
+            const maxX = containerRect.width - btnWidth;
+            const maxY = containerRect.height - btnHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Initial position for "No" button
+        moveNoButton();
+    </script>
+</body>
+</html>
