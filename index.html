@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine?</title>
+    <title>for esther hadassah cordero</title>
     <style>
         body {
             font-family: 'Arial', sans-serif; /* Simple 90s font */
             text-align: center;
-            background: url('') no-repeat center center fixed;
-            background-size: cover;
+            background: #c0c0c0; /* Plain gray background for fallback */
             color: #000;
             margin: 0;
             padding: 0;
@@ -18,6 +17,63 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            position: relative; /* For absolute positioning of images */
+        }
+        .floating-image {
+            position: absolute;
+            opacity: 0.6; /* Semi-transparent for subtlety */
+            pointer-events: none; /* Doesn't interfere with clicks */
+            z-index: -1; /* Behind the interface */
+        }
+        .floating-image:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 150px;
+            height: auto;
+        }
+        .floating-image:nth-child(2) {
+            top: 50%;
+            right: 10%;
+            width: 200px;
+            height: auto;
+            transform: translateY(-50%);
+        }
+        .floating-image:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            width: 180px;
+            height: auto;
+        }
+        .floating-image:nth-child(4) {
+            top: 20%;
+            right: 20%;
+            width: 120px;
+            height: auto;
+        }
+        .floating-image:nth-child(5) {
+            bottom: 30%;
+            left: 5%;
+            width: 160px;
+            height: auto;
+        }
+        .floating-image:nth-child(6) {
+            top: 70%;
+            right: 5%;
+            width: 140px;
+            height: auto;
+        }
+        .floating-image:nth-child(7) {
+            top: 5%;
+            left: 50%;
+            width: 130px;
+            height: auto;
+            transform: translateX(-50%);
+        }
+        .floating-image:nth-child(8) {
+            bottom: 5%;
+            right: 30%;
+            width: 170px;
+            height: auto;
         }
         #container {
             max-width: 600px;
@@ -28,6 +84,7 @@
             border-radius: 0;
             box-shadow: 2px 2px 0px #808080; /* Subtle 3D shadow */
             position: relative;
+            z-index: 1; /* Above images */
         }
         #titlebar {
             background: #000080; /* Blue title bar */
@@ -95,6 +152,16 @@
     </style>
 </head>
 <body>
+    <!-- Floating images across the page -->
+    <img src="https://i.pinimg.com/736x/66/86/ae/6686ae04340f0125502a1fc08bf482da.jpg" class="floating-image" alt="Valentine Image 1">
+    <img src="https://i.pinimg.com/1200x/33/bd/88/33bd88933da6c671a13f42f186c87b98.jpg" class="floating-image" alt="Valentine Image 2">
+    <img src="https://i.pinimg.com/736x/60/40/c2/6040c24659d12a31df1a3ffe2b1f79fb.jpg" class="floating-image" alt="Valentine Image 3">
+    <img src="https://i.pinimg.com/736x/92/eb/31/92eb31c34f9dca70c4c6f5ca894c50e8.jpg" class="floating-image" alt="Valentine Image 4">
+    <img src="https://i.pinimg.com/736x/7e/c7/f9/7ec7f90e758be1f1192b0549c470dd98.jpg" class="floating-image" alt="Valentine Image 5">
+    <img src="https://i.pinimg.com/736x/cd/ce/4d/cdce4d9cb98d140e949fc2571d7ebc6e.jpg" class="floating-image" alt="Valentine Image 6">
+    <img src="https://i.pinimg.com/1200x/09/6b/4f/096b4fe56ec49a0967158b2e1a0fcfea.jpg" class="floating-image" alt="Valentine Image 7">
+    <img src="https://i.pinimg.com/1200x/81/c6/0c/81c60c32002ccd1c1e158d11eb39081b.jpg" class="floating-image" alt="Valentine Image 8">
+
     <div id="container">
         <div id="titlebar">
             Valentine's Question
@@ -111,7 +178,7 @@
     </div>
 
     <script>
-        const phrases = ["Are you sure?", "Really?", "Come on!", "Please say yes!", "Just kidding, but seriously?", "One more chance?"];
+        const phrases = ["sure na yan :{ ", "aw man legit?", "no is a yes?", "why no :{ !", "mahal mo ba ko?", "One more chance?"];
         let index = 0;
 
         function respond(answer) {
@@ -122,7 +189,7 @@
 
             if (answer === 'yes') {
                 questionDiv.innerHTML = "";
-                responseDiv.innerHTML = "Yay! I love you! ❤️";
+                responseDiv.innerHTML = "Yay! di ako na reject mwehehe just know that im really grateful to be with you and I always will be. You make my life so much better and I hope you are always happy. I wish us the best now and in the future. Dont worry about the things we go through, at least we go through them together and thats all that matters. You are the best girlfriend ever and I will always love you, baby. mwehehehe ";
                 responseDiv.style.opacity = '1';
                 yesBtn.style.display = 'none';
                 noBtn.style.display = 'none';
@@ -163,3 +230,6 @@
     </script>
 </body>
 </html>
+</body>
+</html>
+
